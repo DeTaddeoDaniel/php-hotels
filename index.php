@@ -28,16 +28,15 @@
 
                 <div>
                     <span>Disponibilita parcheggio</span>
-                    <select name="parking">
+                    <select name="parking" @change="reflesh" v-model="search_parking">
                         <option value="true">Parcheggio Presente</option>
-                        <option value="false">Parcheggio non presente</option>
-                        <option value="all" selected>Tutti</option>
+                        <option value="all">Tutti</option>
                     </select>
                 </div>
 
                 <div>
                     <span>Voto in stelle</span>
-                    <select name="vote">
+                    <select name="vote" @change="reflesh" v-model="search_vote">
                         <option value="2">2 stelle</option>
                         <option value="3">3 stelle</option>
                         <option value="4">4 stelle</option>
@@ -48,7 +47,7 @@
 
                 <div>
                     <span>Distanza dal centro</span>
-                    <select name="distance">
+                    <select name="distance" @change="reflesh" v-model="search_distance">
                         <option value="1">Meno 1 km</option>
                         <option value="3">Meno 3 km</option>
                         <option value="5">Meno 5 km</option>
@@ -63,8 +62,9 @@
         <div class="main">
 
             <p>
-                <span>Risultati trovati:</span>
+                <span>Risultati trovati: </span>
                 <span><?php #echo count($hotelsFiltrati); ?></span>
+                <span>{{hotelFiltrati.length}}</span>
             </p>
 
             <ul>
@@ -92,9 +92,9 @@
                             </p>
                             
                             <p>
-                                <span class="bold">Voto: </span>
+                                <span class="bold">Voto stelle minimo: </span>
                                 <?php #echo $hotel['vote'] ?>
-                                <span>{{hotel.description}}</span>
+                                <span>{{hotel.vote}}</span>
                             </p>
                             
                             <p>
@@ -104,6 +104,10 @@
                             </p>
                         
                         </div>
+                    </li>
+
+                    <li v-if="hotelFiltrati.length == 0">
+                        <h3>Non sono disponibili hotel per la tua ricerca</h3>
                     </li>
                 <?php #} ?>
             </ul>

@@ -14,7 +14,7 @@
             'description' => 'Hotel Futuro Descrizione',
             'parking' => true,
             'vote' => 2,
-            'distance_to_center' => 2
+            'distance_to_center' => 2.5
         ],
         [
             'name' => 'Hotel Rivamare',
