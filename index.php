@@ -12,13 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esercizio hotel filter</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="app">
         
         <div class="header">
             <h1>Esercizio php database hotel</h1>
+            <p>{{test}}</p>
         </div>
 
         <div class="fiter">
@@ -26,7 +28,7 @@
 
                 <div>
                     <span>Cerca per nome</span>
-                    <input type="text" name="name" placeholder="Cerca per nome">
+                    <input type="text" name="name" placeholder="Cerca per nome" @imput="reflesh">
                 </div>
 
                 <div>
@@ -109,6 +111,8 @@
         </div>
 
     </div>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
