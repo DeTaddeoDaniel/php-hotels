@@ -1,8 +1,3 @@
-<?php
-    include 'php/database.php';
-    include 'php/filter.php'
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +8,7 @@
     <title>Esercizio hotel filter</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,7 +16,6 @@
         
         <div class="header">
             <h1>Esercizio php database hotel</h1>
-            <p>{{test}}</p>
         </div>
 
         <div class="fiter">
@@ -28,7 +23,7 @@
 
                 <div>
                     <span>Cerca per nome</span>
-                    <input type="text" name="name" placeholder="Cerca per nome" @imput="reflesh">
+                    <input type="text" name="name" placeholder="Cerca per nome" @input="reflesh" v-model="search_name">
                 </div>
 
                 <div>
@@ -69,43 +64,48 @@
 
             <p>
                 <span>Risultati trovati:</span>
-                <span><?php echo count($hotelsFiltrati); ?></span>
+                <span><?php #echo count($hotelsFiltrati); ?></span>
             </p>
 
             <ul>
 
-                <?php foreach($hotelsFiltrati as $hotel){ ?>
-                    <li class="card">
+                <!-- <?php #foreach($hotelsFiltrati as $hotel){ ?> -->
+                    <li class="card" v-for="hotel in hotelFiltrati">
                         <div>
                             
                             <p>
                                 <span class="bold">Nome: </span>
-                                <?php echo $hotel['name'] ?>
+                                <?php #echo $hotel['name'] ?>
+                                <span>{{hotel.name}}</span>
                             </p>
                             
                             <p>
                                 <span class="bold">Descrizione: </span>
-                                <?php echo $hotel['description'] ?>
+                                <?php #echo $hotel['description'] ?>
+                                <span>{{hotel.description}}</span>
                             </p>
                             
                             <p>
                                 <span class="bold">Parcheggio: </span>
-                                <?php echo $hotel['parking'] ?>
+                                <?php #echo $hotel['parking'] ?>
+                                <span>{{hotel.parking}}</span>
                             </p>
                             
                             <p>
                                 <span class="bold">Voto: </span>
-                                <?php echo $hotel['vote'] ?>
+                                <?php #echo $hotel['vote'] ?>
+                                <span>{{hotel.description}}</span>
                             </p>
                             
                             <p>
                                 <span class="bold">Distanza dal centro: </span>
-                                <?php echo $hotel['distance_to_center'] ?>
+                                <?php #echo $hotel['distance_to_center'] ?>
+                                <span>{{hotel.distance_to_center}}</span>
                             </p>
                         
                         </div>
                     </li>
-                <?php } ?>
+                <?php #} ?>
             </ul>
 
         </div>

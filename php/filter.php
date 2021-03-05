@@ -1,10 +1,14 @@
 <?php
 
+    include 'database.php';
+
     $hotelsFiltrati = [];
+
+    // $hotels = $_GET['hotels'];
 
     foreach($hotels as $hotel){
         if(search($hotel)  && parking($hotel)  && vote($hotel)  && distance($hotel)){
-            $hotelsFiltrati[] = $hotel;
+            array_push( $hotelsFiltrati, $hotel);
         }
     }
 
@@ -24,4 +28,5 @@
         return true;
     }
 
+    echo json_encode($hotelsFiltrati);
 ?>
