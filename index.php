@@ -1,5 +1,6 @@
 <?php
     include 'php/database.php';
+    include 'php/filter.php'
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +22,57 @@
         </div>
 
         <div class="fiter">
-        
+            <form action="php/filter.php" method="get">
+
+                <div>
+                    <span>Cerca per nome</span>
+                    <input type="text" name="name" placeholder="Cerca per nome">
+                </div>
+
+                <div>
+                    <span>Disponibilita parcheggio</span>
+                    <select name="parking">
+                        <option value="true">Parcheggio Presente</option>
+                        <option value="false">Parcheggio non presente</option>
+                        <option value="all" selected>Tutti</option>
+                    </select>
+                </div>
+
+                <div>
+                    <span>Voto in stelle</span>
+                    <select name="vote">
+                        <option value="2">2 stelle</option>
+                        <option value="3">3 stelle</option>
+                        <option value="4">4 stelle</option>
+                        <option value="5">5 stelle</option>
+                        <option value="all" selected>Tutti</option>
+                    </select>
+                </div>
+
+                <div>
+                    <span>Distanza dal centro</span>
+                    <select name="distance">
+                        <option value="1">Meno 1 km</option>
+                        <option value="3">Meno 3 km</option>
+                        <option value="5">Meno 5 km</option>
+                        <option value="10">Meno 10 km</option>
+                        <option value="all" selected>Tutti</option>
+                    </select>
+                </div>
+
+            </form>
         </div>
 
         <div class="main">
 
             <p>
                 <span>Risultati trovati:</span>
-                <span><?php echo count($hotels); ?></span>
+                <span><?php echo count($hotelsFiltrati); ?></span>
             </p>
 
             <ul>
 
-                <?php foreach($hotels as $hotel){ ?>
+                <?php foreach($hotelsFiltrati as $hotel){ ?>
                     <li class="card">
                         <div>
                             

@@ -39,3 +39,12 @@ ul li{
 .card:first-child{
     border-top: 1px solid #111;
 }
+
+form{
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+form > div{
+    padding-bottom: 5px;
+}
